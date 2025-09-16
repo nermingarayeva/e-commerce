@@ -1,0 +1,21 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "T-Shirt with Tape Details",
+        "price": 120,
+        "oldPrice": 150,
+        "rating": 4.5,
+        "category": "New Arrivals"
+      },
+      {
+        "id": 2,
+        "name": "Skinny Fit Jeans",
+        "price": 180,
+        "oldPrice": 240,
+        "rating": 4.0,
+        "category": "New Arrivals"
+      }
+    ]
+  }
+  

@@ -1,0 +1,260 @@
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Header
+.header {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  height: 10vh;
+}
+.search-icon {
+  color: gray;
+  font-size: 25px;
+}
+.signup {
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 6vh;
+  font-weight: 300;
+
+  a {
+    text-decoration: underline;
+    font-weight: 300;
+  }
+}
+.input-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    input{
+        border-radius: 10px;
+        width: 120%;
+    }
+}
+.brand-title {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar li {
+  list-style: none;
+}
+
+.user-actions {
+  margin-left: 20px;
+  display: flex;
+  gap: 50px;
+  font-size: 25px;
+}
+
+// Main Banner
+.main-banner {
+  background-image: url("../images/banner.jpg");
+  background-size: contain; /* Şəkil tam olaraq div-i örtəcək */
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding: 60px 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 70vh;
+  background-color: #f2f0f1;
+}
+
+.shop-now {
+  padding: 10px 20px;
+  background-color: #ff5e00;
+  border: none;
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.shop-now:hover {
+  background-color: #e04d00;
+}
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+  
+    .stat-item {
+      flex: 1;
+      padding: 20px;
+      
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+  
+      .stat-label {
+        font-size: 1rem;
+        color: #888;
+      }
+    }
+  }
+  
+// Brands
+.brands {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 0;
+}
+
+.brands ul {
+  display: flex;
+  gap: 20px;
+}
+
+.brands li img {
+  width: 100px;
+  height: auto;
+}
+
+// New Arrivals & Top Selling
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-card h4 {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.product-card p {
+  color: #ff5e00;
+  font-size: 1.1em;
+}
+
+// Browse by Dress Style
+.browse-style {
+  background-color: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.styles {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.style-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.style-card img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.style-card p {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+// Customer Reviews
+.customer-reviews {
+  padding: 40px 0;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.reviews {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.review {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+// Footer
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.newsletter input {
+  padding: 10px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  background-color: #ff5e00;
+  border: none;
+  color: #fff;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.footer-links ul {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  margin: 0 15px;
+  font-size: 1.5em;
+}
