@@ -26,7 +26,7 @@
       "oldPrice": 240,
       "rating": 4.0,
       "category": "New Arrivals",
-      "image": "images/CHECKERED SHIRT.png"
+      "image": "/images/CHECKERED SHIRT.png"
     },
     {
       "id": 4,
@@ -63,7 +63,7 @@
       "oldPrice": 240,
       "rating": 4.0,
       "category": "New Arrivals",
-      "image": "images/LOOSE FIT BERMUDA SHORTS.png"
+      "image": "/images/LOOSE FIT BERMUDA SHORTS.png"
     },
     {
       "id": 8,
@@ -72,7 +72,7 @@
       "oldPrice": 240,
       "rating": 4.0,
       "category": "New Arrivals",
-      "image": "images/FADED SKINNY JEANS.png"
+      "image": "/images/FADED SKINNY JEANS.png"
     }
   ]
 }

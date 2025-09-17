@@ -283,19 +283,19 @@ const Home = () => {
   <div className="dress-grid">
     <div className="dress-item casual">
       <span>Casual</span>
-      <img src="images\Casual.png" alt="Casual" />
+      <img src="\images\Casual.png" alt="Casual" />
     </div>
     <div className="dress-item formal">
       <span>Formal</span>
-      <img src="images\Formal.png" alt="Formal" />
+      <img src="\images\Formal.png" alt="Formal" />
     </div>
     <div className="dress-item party">
       <span>Party</span>
-      <img src="images\Party.png" alt="Party" />
+      <img src="\images\Party.png" alt="Party" />
     </div>
     <div className="dress-item gym">
       <span>Gym</span>
-      <img src="images\Gym.png" alt="Gym" />
+      <img src="\images\Gym.png" alt="Gym" />
     </div>
   </div>
 </section>
