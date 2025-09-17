@@ -43,15 +43,15 @@ a {
     font-weight: 300;
   }
 }
-.input-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    input{
-        border-radius: 10px;
-        width: 120%;
-    }
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  input {
+    border-radius: 10px;
+    width: 120%;
+  }
 }
 .brand-title {
   font-size: 2em;
@@ -76,25 +76,56 @@ a {
 
 // Main Banner
 .main-banner {
-  background-image: url("../images/banner.jpg");
-  background-size: contain; /* Şəkil tam olaraq div-i örtəcək */
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fff;
+  color: black;
   padding: 60px 0;
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-wrap: wrap;
   height: 70vh;
+  width: 100%;
+  display: flex;
   background-color: #f2f0f1;
+  background-image: url("/images/banner.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+button{
+  width: 10%;
 }
-
+  h2 {
+    font-size: 50px;
+    font-weight: bolder;
+  }
+  h4 {
+    color: #4d4c4c;
+    font-weight: 400;
+  }
+}
+.shop {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.numbers {
+  width: 70%;
+  
+}
+.image{
+  img{
+    width: 50%;
+  }
+}
 .shop-now {
   padding: 10px 20px;
-  background-color: #ff5e00;
+  background-color: black;
+  border-radius: 30px;
   border: none;
   color: #fff;
   font-size: 1.2em;
+  font-weight: 300;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -103,45 +134,87 @@ a {
   background-color: #e04d00;
 }
 .stats-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 30px 0;
+
+  .stat-item {
+    flex: 1;
+    padding: 20px;
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #888;
+    }
+  }
+}
+
+// Brands
+.brands {
+  background-color: #060606;
+  padding: 2rem 1rem;
+
+  ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    margin: 30px 0;
-  
-    .stat-item {
-      flex: 1;
-      padding: 20px;
-      
-      .stat-number {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #333;
-      }
-  
-      .stat-label {
-        font-size: 1rem;
-        color: #888;
+    gap: 3rem;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      max-height: 40px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
       }
     }
   }
-  
-// Brands
-.brands {
-  display: flex;
-  justify-content: space-around;
-  padding: 40px 0;
+
+  // 📱 Mobile Responsive
+  @media (max-width: 768px) {
+    ul {
+      gap: 2rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    img {
+      max-height: 30px; // Mobil üçün bir az kiçik
+    }
+  }
+
+  @media (max-width: 480px) {
+    ul {
+      gap: 1.5rem;
+    }
+
+    img {
+      max-height: 25px;
+    }
+  }
 }
 
-.brands ul {
-  display: flex;
-  gap: 20px;
-}
-
-.brands li img {
-  width: 100px;
-  height: auto;
-}
 
 // New Arrivals & Top Selling
 .product-grid {
@@ -257,4 +330,131 @@ a {
 .social-links a {
   margin: 0 15px;
   font-size: 1.5em;
+}
+/* Container for the product list */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 məhsul bir sətirdə */
+  gap: 20px; /* Məhsullar arasındakı boşluq */
+  justify-content: center; /* Ortalayır */
+  margin-top: 20px;
+  padding: 0 20px;
+
+  /* Hər bir məhsulun kartı */
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-10px); /* Hover effekti */
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    h3 {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    span {
+      font-weight: bold;
+      color: #333;
+    }
+  }
+}
+
+/* View All button */
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #555;
+  }
+}
+.browse-by-dress-style {
+  background-color: #f7f7f7;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+
+  h2 {
+    font-weight: 900;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .dress-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+
+    .dress-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+
+      span {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: black;
+        z-index: 10;
+      }
+
+      img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 12px;
+        display: block;
+      }
+    }
+  }
+}
+
+// Mobile Adaptasiya
+@media (max-width: 600px) {
+  .browse-by-dress-style {
+    padding: 1rem;
+
+    .dress-grid {
+      grid-template-columns: 1fr;
+
+      .dress-item {
+        img {
+          height: 200px;
+        }
+      }
+    }
+  }
 }

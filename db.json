@@ -1,21 +1,78 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "name": "T-Shirt with Tape Details",
-        "price": 120,
-        "oldPrice": 150,
-        "rating": 4.5,
-        "category": "New Arrivals"
-      },
-      {
-        "id": 2,
-        "name": "Skinny Fit Jeans",
-        "price": 180,
-        "oldPrice": 240,
-        "rating": 4.0,
-        "category": "New Arrivals"
-      }
-    ]
-  }
-  
+  "products": [
+    {
+      "id": 1,
+      "name": "T-Shirt with Tape Details",
+      "price": 120,
+      "oldPrice": 150,
+      "rating": 4.5,
+      "category": "New Arrivals",
+      "image": "/images/T-shirt with Tape Details.png"
+    },
+    {
+      "id": 2,
+      "name": "Skinny Fit Jeans",
+      "price": 180,
+      "oldPrice": 240,
+      "rating": 4.0,
+      "category": "New Arrivals",
+      "image": "/images/Skinny Fit Jean.png"
+    },
+
+    {
+      "id": 3,
+      "name": "Checked Shirt",
+      "price": 180,
+      "oldPrice": 240,
+      "rating": 4.0,
+      "category": "New Arrivals",
+      "image": "images/CHECKERED SHIRT.png"
+    },
+    {
+      "id": 4,
+      "name": "Sleeve Striped T-shirt",
+      "price": 180,
+      "oldPrice": 240,
+      "rating": 4.0,
+      "category": "New Arrivals",
+      "image": "/images/Sleeve Striped T-shirt.png"
+    },
+    {
+      "id": 5,
+      "name": "Vertical Striped Shirt",
+      "price": 180,
+      "oldPrice": 240,
+      "rating": 4.0,
+      "category": "New Arrivals",
+      "image": "/images/VERTICAL STRIPED SHIRT.png"
+    },
+
+    {
+      "id": 6,
+      "name": "Courage Graphic T-shirt",
+      "price": 180,
+      "oldPrice": 240,
+      "rating": 4.0,
+      "category": "New Arrivals",
+      "image": "/images/COURAGE GRAPHIC T-SHIRT.png"
+    },
+    {
+      "id": 7,
+      "name": "Loose Fit Bermuda Shorts",
+      "price": 180,
+      "oldPrice": 240,
+      "rating": 4.0,
+      "category": "New Arrivals",
+      "image": "images/LOOSE FIT BERMUDA SHORTS.png"
+    },
+    {
+      "id": 8,
+      "name": "Faded Skinny Jeans",
+      "price": 180,
+      "oldPrice": 240,
+      "rating": 4.0,
+      "category": "New Arrivals",
+      "image": "images/FADED SKINNY JEANS.png"
+    }
+  ]
+}
