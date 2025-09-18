@@ -6,8 +6,10 @@
       "price": 120,
       "oldPrice": 150,
       "rating": 4.5,
-      "category": "New Arrivals",
-      "image": "/images/T-shirt with Tape Details.png"
+      "category": "Men",
+      "image": "/images/T-shirt with Tape Details.png",
+      "color": "green", 
+      "size": "medium"   
     },
     {
       "id": 2,
@@ -15,18 +17,21 @@
       "price": 180,
       "oldPrice": 240,
       "rating": 4.0,
-      "category": "New Arrivals",
-      "image": "/images/Skinny Fit Jean.png"
+      "category": "Men",
+      "image": "/images/Skinny Fit Jean.png",
+      "color": "green", 
+      "size": "medium" 
     },
-
     {
       "id": 3,
       "name": "Checked Shirt",
       "price": 180,
       "oldPrice": 240,
       "rating": 4.0,
-      "category": "New Arrivals",
-      "image": "/images/CHECKERED SHIRT.png"
+      "category": "Women",
+      "image": "/images/CHECKERED SHIRT.png",
+      "color": "green", 
+      "size": "medium" 
     },
     {
       "id": 4,
@@ -34,8 +39,10 @@
       "price": 180,
       "oldPrice": 240,
       "rating": 4.0,
-      "category": "New Arrivals",
-      "image": "/images/Sleeve Striped T-shirt.png"
+      "category": "Women",
+      "image": "/images/Sleeve Striped T-shirt.png",
+      "color": "green", 
+      "size": "medium" 
     },
     {
       "id": 5,
@@ -43,18 +50,21 @@
       "price": 180,
       "oldPrice": 240,
       "rating": 4.0,
-      "category": "New Arrivals",
-      "image": "/images/VERTICAL STRIPED SHIRT.png"
+      "category": "Women",
+      "image": "/images/VERTICAL STRIPED SHIRT.png",
+      "color": "green", 
+      "size": "medium" 
     },
-
     {
       "id": 6,
       "name": "Courage Graphic T-shirt",
       "price": 180,
       "oldPrice": 240,
       "rating": 4.0,
-      "category": "New Arrivals",
-      "image": "/images/COURAGE GRAPHIC T-SHIRT.png"
+      "category": "Men",
+      "image": "/images/COURAGE GRAPHIC T-SHIRT.png",
+      "color": "orange", 
+      "size": "medium" 
     },
     {
       "id": 7,
@@ -62,8 +72,10 @@
       "price": 180,
       "oldPrice": 240,
       "rating": 4.0,
-      "category": "New Arrivals",
-      "image": "/images/LOOSE FIT BERMUDA SHORTS.png"
+      "category": "Women",
+      "image": "/images/LOOSE FIT BERMUDA SHORTS.png",
+      "color": "blue", 
+      "size": "small" 
     },
     {
       "id": 8,
@@ -71,8 +83,10 @@
       "price": 180,
       "oldPrice": 240,
       "rating": 4.0,
-      "category": "New Arrivals",
-      "image": "/images/FADED SKINNY JEANS.png"
+      "category": "Women",
+      "image": "/images/FADED SKINNY JEANS.png",
+      "color": "blue", 
+      "size": "small" 
     }
   ]
 }

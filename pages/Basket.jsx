@@ -1,168 +1,148 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { FiTrash2 } from "react-icons/fi";
+import "../styles/global.scss";
+import { useNavigate, useLocation } from "react-router-dom";
 import Layout from "../components/Layout";
 
-// Error Boundary Component
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
-  }
+const Basket = () => {
+  const [basket, setBasket] = useState([]);
+  const navigate = useNavigate(); // Initialize useNavigate hook for navigation
+  const location = useLocation(); // Get current location
 
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
+  // `localStorage`-dən basket məlumatını alırıq
+  useEffect(() => {
+    const storedBasket = JSON.parse(localStorage.getItem("basket")) || [];
+    setBasket(storedBasket);
+  }, []); // Bu `useEffect` yalnız komponent mount olduqda işə düşəcək
 
-  componentDidCatch(error, errorInfo) {
-    this.setState({ error, errorInfo });
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <h1>Something went wrong.</h1>;
+  // Basketi `localStorage`-ə yazırıq
+  useEffect(() => {
+    if (basket.length > 0) {
+      localStorage.setItem("basket", JSON.stringify(basket));
     }
-    return this.props.children;
-  }
-}
+  }, [basket]); // basket state dəyişdikcə localStorage yenilənir
 
-const ProductDetailPage = () => {
-  const { productid } = useParams();
-  const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
-  const [suggestedProducts, setSuggestedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // Sayı artırmaq və azaltmaq
+  const updateQuantity = (productId, action) => {
+    setBasket((prevBasket) => {
+      const updatedBasket = prevBasket.map((item) =>
+        item.id === productId
+          ? {
+              ...item,
+              quantity:
+                action === "increase"
+                  ? item.quantity + 1
+                  : item.quantity > 1
+                  ? item.quantity - 1
+                  : 1,
+            }
+          : item
+      );
 
-  // Fetch product
-  useEffect(() => {
-    if (!productid) {
-      setError("Product ID is missing");
-      setLoading(false);
-      return;
-    }
+      // LocalStorage-i yeniləyirik
+      localStorage.setItem("basket", JSON.stringify(updatedBasket));
 
-    fetch(`http://localhost:5000/products/${productid}`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Product not found");
-        return res.json();
-      })
-      .then((data) => {
-        setProduct(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError("Couldn't fetch the product details.");
-        setLoading(false);
-      });
-  }, [productid]);
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [productid]);
+      return updatedBasket;
+    });
+  };
 
-  // Fetch other products
-  useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => {
-        const filtered = data.filter((p) => p.id !== parseInt(productid));
-        setSuggestedProducts(filtered.slice(0, 4)); // Show 4 suggestions
-      });
-  }, [productid]);
+  // Məhsulu silmək
+  const removeFromBasket = (productId) => {
+    setBasket((prevBasket) => {
+      const updatedBasket = prevBasket.filter((item) => item.id !== productId);
 
- const addToBasket = (product) => {
-  const basket = JSON.parse(localStorage.getItem("basket")) || [];
-  const existing = basket.find((p) => p.id === product.id);
+      // LocalStorage-i yeniləyirik
+      localStorage.setItem("basket", JSON.stringify(updatedBasket));
 
-  let updatedBasket;
-  if (existing) {
-    updatedBasket = basket.map((p) =>
-      p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
-    );
-  } else {
-    updatedBasket = [...basket, { ...product, quantity: 1 }];
-  }
+      return updatedBasket;
+    });
+  };
+  const generateKey = (item) => `${item.id}-${item.quantity}`;
 
-  localStorage.setItem("basket", JSON.stringify(updatedBasket));
-
-  // Send the current location as state to the basket page
-  navigate("/basket", { state: { from: location.pathname } });
-};
-
-
-  if (loading) return <div>Loading...</div>;
-  if (error)
-    return (
-      <div>
-        <p>{error}</p>
-        <button onClick={() => navigate("/")}>Back to Home</button>
-      </div>
-    );
-  if (!product) return <div>Product not found</div>;
+  // Qiymətlər
+  const subtotal = basket.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const discount = subtotal * 0.2; // 20% endirim
+  const deliveryFee = 15;
+  const total = subtotal - discount + deliveryFee;
+  
+  // Go to checkout (or previous page)
+  const goToCheckout = () => {
+    const previousPage = location.state?.from || "/shop"; // "from" state ilə əvvəlki səhifə məlumatını alırıq
+    navigate(previousPage); // Navigate to the previous page or default '/shop'
+  };
 
   return (
     <div>
-      {" "}
       <Layout />
-      <div className="product-page">
-        <div className="product-main">
-          <div className="product-images">
-            <img src={product.image} alt={product.name} width="300" />
-          </div>
-          <div className="product-info">
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>
-              <strong>${product.price}</strong>
-            </p>
-            <p>Rating: {product.rating} / 5</p>
-            <button
-              onClick={() => addToBasket(product)}
-              className="add-to-cart-btn"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-
-        {/* Reviews Section (dummy content) */}
-        <div className="reviews-section">
-          <h3>Ratings & Reviews</h3>
-          <div className="review">
-            <strong>Samantha D.</strong>
-            <p>⭐️⭐️⭐️⭐️⭐️ - Loved the shirt! Super soft and comfy.</p>
-          </div>
-          <div className="review">
-            <strong>Ethan R.</strong>
-            <p>
-              ⭐️⭐️⭐️⭐️ - Nice quality, fits as expected. Would buy again.
-            </p>
-          </div>
-        </div>
-
-        {/* Suggested Products */}
-        {/* Suggested Products */}
-        <div className="suggested-products">
-          <h3>You Might Also Like</h3>
-          <div className="suggested-list">
-            {suggestedProducts.map((p) => (
-              <Link
-                key={p.id}
-                to={`/products/${p.id}`}
-                className="suggested-item-link"
-              >
-                <div className="suggested-item">
-                  <img src={p.image} alt={p.name} width="150" />
-                  <p>{p.name}</p>
-                  <p>${p.price}</p>
-                  <p>⭐️ {p.rating}</p>
+      <div className="cart-page">
+        <div className="cart-items">
+          <h2>Your Cart</h2>
+          {basket.length === 0 ? (
+            <p>Your cart is empty</p>
+          ) : (
+            basket.map((item) => (
+              <div key={generateKey(item)} className="cart-item">
+                <img src={item.image} alt={item.name} />
+                <div className="item-details">
+                  <h3>{item.name}</h3>
+                  <p>Size: {item.size}</p>
+                  <p>Color: {item.color}</p>
+                  <p className="price">${item.price}</p>
                 </div>
-              </Link>
-            ))}
-          </div>
+                <div className="quantity">
+                  <button onClick={() => updateQuantity(item.id, "decrease")}>
+                    −
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => updateQuantity(item.id, "increase")}>
+                    +
+                  </button>
+                </div>
+                <button
+                  onClick={() => removeFromBasket(item.id)}
+                  className="remove-btn"
+                >
+                  <FiTrash2 />
+                </button>
+              </div>
+            ))
+          )}
         </div>
-        
+
+        <div className="order-summary">
+          <h3>Order Summary</h3>
+          <div className="row">
+            <span>Subtotal</span>
+            <span>${subtotal}</span>
+          </div>
+          <div className="row discount">
+            <span>Discount (-20%)</span>
+            <span>-${discount.toFixed(0)}</span>
+          </div>
+          <div className="row">
+            <span>Delivery Fee</span>
+            <span>${deliveryFee}</span>
+          </div>
+          <hr />
+          <div className="row total">
+            <span>Total</span>
+            <span>${total.toFixed(0)}</span>
+          </div>
+
+          <div className="promo">
+            <input type="text" placeholder="Add promo code" />
+            <button>Apply</button>
+          </div>
+
+          <button className="checkout-btn" onClick={goToCheckout}>
+            Go to Checkout →
+          </button>
+        </div>
       </div>
-      <section className="newsletter">
+       <section className="newsletter">
         <div className="newsletter-content">
           <h2>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
           <form>
@@ -623,10 +603,4 @@ const ProductDetailPage = () => {
   );
 };
 
-const ProductDetailPageWithBoundary = () => (
-  <ErrorBoundary>
-    <ProductDetailPage />
-  </ErrorBoundary>
-);
-
-export default ProductDetailPageWithBoundary;
+export default Basket;
