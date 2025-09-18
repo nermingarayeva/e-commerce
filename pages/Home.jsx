@@ -18,32 +18,30 @@ const Home = () => {
   const [addedMessage, setAddedMessage] = useState(""); // "Added to Basket" mesajı
   const navigate = useNavigate(); // useNavigate hook'u ilə yönləndirmə
 
-const addToCart = (product) => {
-  // 1) Cari basket-i localStorage-dan götür
-  const current = JSON.parse(localStorage.getItem("basket")) || [];
+  const addToCart = (product) => {
+    // 1) Cari basket-i localStorage-dan götür
+    const current = JSON.parse(localStorage.getItem("basket")) || [];
 
-  // 2) Məhsul varsa quantity artir, yoxdursa əlavə et
-  const existing = current.find((p) => p.id === product.id);
-  let newBasket;
-  if (existing) {
-    newBasket = current.map((p) =>
-      p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
-    );
-  } else {
-    newBasket = [...current, { ...product, quantity: 1 }];
-  }
+    // 2) Məhsul varsa quantity artir, yoxdursa əlavə et
+    const existing = current.find((p) => p.id === product.id);
+    let newBasket;
+    if (existing) {
+      newBasket = current.map((p) =>
+        p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+      );
+    } else {
+      newBasket = [...current, { ...product, quantity: 1 }];
+    }
 
-  // 3) localStorage-a yazırıq
-  localStorage.setItem("basket", JSON.stringify(newBasket));
+    // 3) localStorage-a yazırıq
+    localStorage.setItem("basket", JSON.stringify(newBasket));
 
-  // 4) State yeniləyirik
-  setBasket(newBasket);
+    // 4) State yeniləyirik
+    setBasket(newBasket);
 
-  // 5) Yönləndiririk
-  navigate("/basket");
-};
-
-
+    // 5) Yönləndiririk
+    navigate("/basket");
+  };
 
   useEffect(() => {
     // Məlumatlar localStorage-ə yazılır
@@ -262,53 +260,55 @@ const addToCart = (product) => {
           </li>
         </ul>
       </section>
-         <div className="new-arrivals">
-           <h2>New Arrivals</h2>
-           <div className="product-list">
-             {products.slice(0, visibleNewArrivals).map((product) => {     
-               return (
-                 <div key={product.id} className="product-card">
-                   <Link to={`/products/${product.id}`}>
-                     <img src={product.image} alt={product.name} />
-                     <h3>{product.name}</h3>
-                     <p>${product.price}</p>
-                     <p>
-                       <span>{product.rating} / 5</span>
-                     </p>
-                   </Link>
-                 </div>
-               );
-             })}
-           </div>
-           {visibleNewArrivals < products.length && (
-             <button onClick={() => setVisibleNewArrivals(products.length)}>
-               View All
-             </button>
-           )}
-         </div>
+      <div className="new-arrivals">
+        <h2>New Arrivals</h2>
+        <div className="products-list">
+          {products.slice(0, visibleNewArrivals).map((product) => {
+            return (
+              <div key={product.id} className="product-card">
+                <Link to={`/products/${product.id}`}>
+                  <img src={product.image} alt={product.name} />
+                  <h3>{product.name}</h3>
+                  <p>${product.price}</p>
+                  <p>
+                    <div className="stars">★★★★★</div>
+                    <span>{product.rating} / 5</span>
+                  </p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+        {visibleNewArrivals < products.length && (
+          <button onClick={() => setVisibleNewArrivals(products.length)}>
+            View All
+          </button>
+        )}
+      </div>
       {/* Top Selling */}
       <section className="top-selling">
-  <h3>Top Selling</h3>
-  <div className="product-list">
-    {products
-      .slice(visibleNewArrivals, visibleNewArrivals + visibleTopSelling)
-      .map((product) => (
-        <div key={product.id} className="product-card">
-          <Link to={`/products/${product.id}`}>
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>${product.price}</p>
-            <p>
-              <span>{product.rating} / 5</span>
-            </p>
-          </Link>
+        <h3>Top Selling</h3>
+        <div className="products-list">
+          {products
+            .slice(visibleNewArrivals, visibleNewArrivals + visibleTopSelling)
+            .map((product) => (
+              <div key={product.id} className="product-card">
+                <Link to={`/products/${product.id}`}>
+                  <img src={product.image} alt={product.name} />
+                  <h3>{product.name}</h3>
+                  <p>${product.price}</p>
+                  <p>
+                    <div className="stars">★★★★★</div>
+                    <span>{product.rating} / 5</span>
+                  </p>
+                </Link>
+              </div>
+            ))}
         </div>
-      ))}
-  </div>
-  {visibleTopSelling < products.length && (
-    <button onClick={handleViewAllTopSelling}>View All</button>
-  )}
-</section>
+        {visibleTopSelling < products.length && (
+          <button onClick={handleViewAllTopSelling}>View All</button>
+        )}
+      </section>
 
       {/* Browse by Dress Style */}
       <section className="browse-by-dress-style">

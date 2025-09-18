@@ -81,6 +81,9 @@ a {
   padding: 60px 80px;
   background: #f8f8f8;
   position: relative;
+  background-image: url("../public//images//banner.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .shop {
@@ -137,6 +140,7 @@ a {
 .stat-number {
   font-size: 28px;
   font-weight: 700;
+  color: white;
 }
 
 .stat-label {
@@ -202,10 +206,6 @@ a {
       flex-wrap: wrap;
       justify-content: center;
     }
-
-    img {
-      max-height: 30px; // Mobil üçün bir az kiçik
-    }
   }
 
   @media (max-width: 480px) {
@@ -219,37 +219,7 @@ a {
   }
 }
 
-
 // New Arrivals & Top Selling
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 20px;
-}
-
-.product-card {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.product-card h4 {
-  margin-top: 10px;
-  font-size: 1.2em;
-}
-
-.product-card p {
-  color: #ff5e00;
-  font-size: 1.1em;
-}
 
 // Browse by Dress Style
 .browse-style {
@@ -335,51 +305,51 @@ a {
   margin: 0 15px;
   font-size: 1.5em;
 }
-/* Container for the product list */
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 məhsul bir sətirdə */
-  gap: 20px; /* Məhsullar arasındakı boşluq */
-  justify-content: center; /* Ortalayır */
-  margin-top: 20px;
-  padding: 0 20px;
+// /* Container for the product list */
+// .product-list {
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr); /* 4 məhsul bir sətirdə */
+//   gap: 20px; /* Məhsullar arasındakı boşluq */
+//   justify-content: center; /* Ortalayır */
+//   margin-top: 20px;
+//   padding: 0 20px;
 
-  /* Hər bir məhsulun kartı */
-  .product-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
+//   /* Hər bir məhsulun kartı */
+//   .product-card {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     padding: 15px;
+//     text-align: center;
+//     transition: transform 0.3s ease;
 
-    &:hover {
-      transform: translateY(-10px); /* Hover effekti */
-    }
+//     &:hover {
+//       transform: translateY(-10px); /* Hover effekti */
+//     }
 
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
+//     img {
+//       width: 100%;
+//       height: auto;
+//       border-radius: 8px;
+//     }
 
-    h3 {
-      margin-top: 15px;
-      font-size: 18px;
-      font-weight: bold;
-    }
+//     h3 {
+//       margin-top: 15px;
+//       font-size: 18px;
+//       font-weight: bold;
+//     }
 
-    p {
-      margin-top: 10px;
-      font-size: 16px;
-    }
+//     p {
+//       margin-top: 10px;
+//       font-size: 16px;
+//     }
 
-    span {
-      font-weight: bold;
-      color: #333;
-    }
-  }
-}
+//     span {
+//       font-weight: bold;
+//       color: #333;
+//     }
+//   }
+// }
 
 /* View All button */
 button {
@@ -423,7 +393,7 @@ button {
       overflow: hidden;
       background-color: white;
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 
       span {
         position: absolute;
@@ -446,7 +416,7 @@ button {
   }
 }
 
-// Mobile Adaptasiya
+// Mobil
 @media (max-width: 600px) {
   .browse-by-dress-style {
     padding: 1rem;
@@ -462,7 +432,6 @@ button {
     }
   }
 }
-// Our Happy Customers
 .happy-customers {
   max-width: 1200px;
   margin: 3rem auto 5rem;
@@ -508,7 +477,7 @@ button {
       border: 1px solid #ddd;
       border-radius: 12px;
       padding: 1rem 1.2rem;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 
       .stars {
         color: #ffcc00;
@@ -635,7 +604,7 @@ button {
           width: 30px;
           height: 30px;
           border-radius: 50%;
-         
+
           font-size: 1rem;
           text-decoration: none;
           transition: background 0.3s ease;
@@ -951,13 +920,6 @@ button {
   border-right: 1px solid #ccc;
 }
 
-.product-list {
-  width: 70%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
 .product-card {
   border: 1px solid #ccc;
   padding: 10px;
@@ -1026,12 +988,12 @@ button {
 }
 
 /* Məhsul kartları */
-.product-list {
-  width: 70%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
+// .product-list {
+//   width: 100%;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+//   gap: 20px;
+// }
 
 .product-card {
   background-color: #fff;
@@ -1162,23 +1124,28 @@ button {
   font-weight: bold;
 }
 
-/* Hamburger menu styles */
-.hamburger-icon {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; // Varsayılan vəziyyətdə menyu gizlidir
+  }
+
+  .navbar ul.active {
+    display: block; // Hamburger menyusu açıldığında göstərilir
+  }
+
+  .hamburger-icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+  }
 }
 
-.hamburger-icon .bar {
-  width: 30px;
-  height: 4px;
-  background-color: #ff6f00; /* Orange color */
-  border-radius: 2px;
-}
 
 /* User actions section */
 .user-actions {
@@ -1214,7 +1181,7 @@ button {
     top: 60px;
     left: 0;
     right: 0;
-    background-color: #fff;
+    background-color: #a31d1d;
     padding: 10px;
     display: none;
     flex-direction: column;
@@ -1341,4 +1308,176 @@ input {
   border: none;
   cursor: pointer;
   margin-top: 1rem;
+}
+/* General Layout for Products and Filters */
+.app-container {
+  display: flex;
+  flex-direction: column; /* Mobil üçün sütun düzülüşü */
+  justify-content: flex-start;
+  padding: 20px;
+  gap: 20px;
+}
+
+.filters-panel {
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Desktop: 4 products per row */
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 10px 0;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #777;
+}
+
+.order-button {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+  background-color: #5a54e1;
+}
+
+.order-button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive for Tablets and Mobile */
+@media (max-width: 1024px) {
+  .products-container {
+    grid-template-columns: repeat(3, 1fr); /* Tablet: 3 products per row */
+  }
+
+  .filters-panel {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 products per row */
+  }
+
+  .filters-panel {
+    position: relative;
+  }
+
+  .product-list {
+    margin-top: 20px;
+  }
+
+  .app-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-container {
+    grid-template-columns: 1fr; /* Mobile: 1 product per row */
+  }
+
+  .filters-panel {
+    width: 100%;
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* Footer Button */
+.app-container button {
+  background-color: #041930;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.app-container button:hover {
+  background-color: #6138f6;
+}
+/* Mobil üçün navbar düzəlişi */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; /* Menü standartda gizlidir */
+    flex-direction: column; /* Menyu elementlərini vertikal sıralayır */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar ul.active {
+    display: block; /* Menü açıldığında göstərilir */
+  }
+
+  .hamburger-icon {
+    display: block; /* Hamburger ikonu görünür */
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .hamburger-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px 0;
+  }
+
+  .user-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
 }
